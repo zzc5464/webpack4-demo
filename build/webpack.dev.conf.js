@@ -9,7 +9,7 @@ const devConfig = merge(baseWebpackConfig,{
     port: 8002,
     // contentBase: path.join(__dirname, 'dist'), // 服务器使用的文件，一般是dist目录
     // hot: true,
-    open: true,
+    // open: true,
     // overlay:{ // 在浏览器展示错误日志
     //   errors:true,
     //   warnings:false

@@ -3,10 +3,9 @@ const build = {
   publicPath: path.join(__dirname,'../dist')
 }
 const dev = {
-  publicPath: '/'
+  publicPath: '/',
+  cssSourceMap: false
 }
-console.log(build,dev);
-
 module.exports =  {
   build,
   dev
