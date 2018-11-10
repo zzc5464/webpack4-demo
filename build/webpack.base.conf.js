@@ -1,4 +1,4 @@
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+// const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const utils = require('./utils')
 const path = require('path')
@@ -10,8 +10,8 @@ function resolve (dir) {
 function isDev() {
   return process.env.NODE_ENV === 'development' ? true : false
 }
-
-module.exports = {
+const webpackConfig = 
+{
   mode: process.env.NODE_ENV,
   entry: resolve('src/main.js'),
   output: {
@@ -34,8 +34,16 @@ module.exports = {
             options: vueLoaderConfig
           }
         ],
-        include: [resolve('src')],
+        include: [resolve('src'),resolve('node_modules/vux')],
       },
+      // {
+      //   test: /\.less$/,
+      //   use: [
+      //     'vue-style-loader',
+      //     'css-loader',
+      //     'less-loader'
+      //   ]
+      // },
       {
         test: /.js$/,
         loader: 'babel-loader',
@@ -68,7 +76,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin(), // vue-loader v14 以上一定要引入这个插件
+    // new VueLoaderPlugin(), // vue-loader v14 以上一定要引入这个插件
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -78,3 +86,7 @@ module.exports = {
     }
   }
 }
+const vuxLoader = require('vux-loader')
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ['vux-ui']
+})

@@ -14,6 +14,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
+    "babel": "^6.23.0",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.0.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -45,15 +46,17 @@
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "vue": "^2.5.17",
-    "vue-loader": "^15.4.2",
+    "vue-loader": "^14.2.2",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17",
+    "vux-loader": "^1.2.9",
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vux": "^2.9.2"
   }
 }

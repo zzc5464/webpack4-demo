@@ -12,6 +12,18 @@ export default {
 
     }
   },
+  created() {
+    this.$vux.alert.show({
+    title: 'Vux is Cool',
+    content: 'Do you agree?',
+    onShow () {
+      console.log('Plugin: I\'m showing')
+    },
+    onHide () {
+      console.log('Plugin: I\'m hiding')
+    }
+  })
+  },
   computed: {
     data() {
       return this.$store.state.data
