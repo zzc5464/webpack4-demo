@@ -83,6 +83,7 @@ const webpackConfig =
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'API': resolve('src/api/index'),
     }
   }
 }

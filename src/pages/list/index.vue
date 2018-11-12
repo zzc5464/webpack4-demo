@@ -6,6 +6,7 @@
   </div>
 </template>
 <script>
+import { TEST } from 'API';
 export default {
   data() {
     return {
@@ -14,21 +15,14 @@ export default {
   },
   created() {
     this.axios({
-      url: '/devapi/a',
+      url: TEST,
       methods: 'get',
     }).then( res => {
-      console.log(res);
+      this.$loading({
+        show: true
+      })
     })
-    // this.$vux.alert.show({
-    // title: 'Vux is Cool',
-    // content: 'Do you agree?',
-    // onShow () {
-    //   console.log('Plugin: I\'m showing')
-    // },
-    // onHide () {
-    //   console.log('Plugin: I\'m hiding')
-    // }
-  // })
+    
   },
   computed: {
     data() {

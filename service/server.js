@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('*', (req, res) => {
-  console.log(req.url);
+  // console.log(res);
   const path = req.url
   const newPath = './mock' + path + '.json'
   res.send(require(newPath))
