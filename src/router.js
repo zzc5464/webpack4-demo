@@ -3,15 +3,17 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter)
 
 // 引入的路由文件
-
-import List from './pages/list/index.js';
+import Gallery from './pages/gallery';
+import List from './pages/list/index';
 
 const routes = [
+  Gallery,
   {
-    path: '/',
+    path: '/home',
+    name: 'home',
     component: resolve => require (['./pages/index.vue'],resolve)
   },
-  List
+  List,
 ]
 
 export default new VueRouter({

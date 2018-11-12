@@ -18,7 +18,7 @@ export default {
       url: TEST,
       methods: 'get',
     }).then( res => {
-      this.$loading({
+      this.$toast({
         show: true
       })
     })

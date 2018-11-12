@@ -1,4 +1,6 @@
 export default {
   path: '/list',
-  component: () => import('./index.vue')
+  name: 'list',
+  component: () => import('./index.vue'),
+  info: {}
 }
