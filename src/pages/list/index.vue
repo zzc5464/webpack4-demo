@@ -13,16 +13,22 @@ export default {
     }
   },
   created() {
-    this.$vux.alert.show({
-    title: 'Vux is Cool',
-    content: 'Do you agree?',
-    onShow () {
-      console.log('Plugin: I\'m showing')
-    },
-    onHide () {
-      console.log('Plugin: I\'m hiding')
-    }
-  })
+    this.axios({
+      url: '/devapi/a',
+      methods: 'get',
+    }).then( res => {
+      console.log(res);
+    })
+    // this.$vux.alert.show({
+    // title: 'Vux is Cool',
+    // content: 'Do you agree?',
+    // onShow () {
+    //   console.log('Plugin: I\'m showing')
+    // },
+    // onHide () {
+    //   console.log('Plugin: I\'m hiding')
+    // }
+  // })
   },
   computed: {
     data() {

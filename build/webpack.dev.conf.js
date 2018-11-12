@@ -2,11 +2,13 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf');
+const proxyTable = require('./proxyTable')
 const devConfig = merge(baseWebpackConfig,{
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 8002,
+    proxy: proxyTable, // 转发服务器
     // contentBase: path.join(__dirname, 'dist'), // 服务器使用的文件，一般是dist目录
     // hot: true,
     // open: true,

@@ -2,9 +2,12 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import { AlertPlugin, ToastPlugin } from 'vux'
+import { http } from './widget';
+import { AlertPlugin,ConfirmPlugin, ToastPlugin, LoadingPlugin } from 'vux'
 
 Vue.use(AlertPlugin)
+Vue.use(ConfirmPlugin)
+Vue.use(LoadingPlugin)
 Vue.use(ToastPlugin)
 const app = new Vue({
   el: '#app',
@@ -12,5 +15,6 @@ const app = new Vue({
   store,
   render: h => h(App)
 })
-console.log(app);
+http(app)
+
 export default app
