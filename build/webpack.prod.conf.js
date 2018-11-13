@@ -12,7 +12,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 /**
  * 插件 end
@@ -25,7 +25,7 @@ const prodWbpackConfig = merge( baseWebpackConfig ,{
   devtool: '#source-map',
   optimization: {
     minimizer: [ 
-      new OptimizeCSSAssetsPlugin(), // 压缩 + 优化css代码 
+      new OptimizeCssAssetsPlugin(), // 压缩 + 优化css代码 
     ],
     runtimeChunk: true,
     splitChunks: {
@@ -55,14 +55,17 @@ const prodWbpackConfig = merge( baseWebpackConfig ,{
   },  
   plugins: [
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": "production"
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
     // webpack 4 的css代码压缩 contenthash 为了做文件缓存的，内容hash 不变就可以在网站请求的资源里缓存了
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
+    // contenthash 与webpack4有冲突
+      filename: '[name].[md5:contenthash:hex:20].css',
+      chunkFilename: '[id].[md5:contenthash:hex:20].css',
     }),
     new HtmlWebpackPlugin({
       /**
@@ -91,10 +94,10 @@ const prodWbpackConfig = merge( baseWebpackConfig ,{
         safe: true
       }
     }),
-    // new ExtractTextPlugin({ // 提取css样式文件出来
-    //   filename: path.posix.join('static','css/[name].css?r=[contenthash]'),
-    //   allChunks: true
-    // }),
+    new ExtractTextPlugin({ // 提取css样式文件出来
+      filename: path.posix.join('static','css/[name].css?r=[md5:contenthash:hex:20]'),
+      allChunks: true
+    }),
     new webpack.HashedModuleIdsPlugin(),// 生产环境打包出文件对应的哈希
     // new webpack.optimize.CommonsChunkPlugin({
     // // 将公共文件抽取出来，带来性能上的提升 4.0 已经移除

@@ -23,6 +23,11 @@ const devConfig = merge(baseWebpackConfig,{
     // disableHostCheck: true
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
+      }
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../template.html'),
       filename: 'index.html'

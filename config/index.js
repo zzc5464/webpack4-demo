@@ -1,6 +1,7 @@
 const path = require('path')
 const build = {
-  publicPath: path.join(__dirname,'../dist')
+  assetsPublicPath: '/dist/',
+  publicPath: '', // 加载外部资源的路径
 }
 const dev = {
   publicPath: '/',

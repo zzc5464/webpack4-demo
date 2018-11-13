@@ -10,12 +10,13 @@ function resolve (dir) {
 function isDev() {
   return process.env.NODE_ENV === 'development' ? true : false
 }
+
 const webpackConfig = 
 {
   mode: process.env.NODE_ENV,
   entry: resolve('src/main.js'),
   output: {
-    publicPath: isDev ? config.dev.publicPath: config.build.publicPath,
+    publicPath: isDev() ? config.dev.publicPath: config.build.publicPath,
     path: resolve('dist'),
     filename: '[name].js'
   },
